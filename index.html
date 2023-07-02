@@ -10,20 +10,39 @@
     <title>The Odin Project - Etch-A-Sketch</title>
 </head>
 <body>
-    <h1>Etch-A-Sketch</h1>
+    <h1 class="pt-sm">Etch-A-Sketch</h1>
 
-    <div class="container">
+    <div class="container flex justify-between mt-sm">
             <form>
-                <label for="grid-size">Enter a grid size (1-100):</label>
+                <label for="grid-size" class="fs-400">Enter a grid size (1-100):</label>
                 <input type="text" value="16" maxlength="3" size="3" min="1" max="100" name="grid-size" id="grid-size">
-                <input type="submit" value="Generate Grid" id="generate-grid">
+                <input type="submit" value="Generate Grid" class="action-btn" id="generate-grid">
             </form>
-            <button id="clear-grid">Clear Grid</button>
+            <button class="action-btn" id="clear-grid">Clear Grid</button>
     </div>
 
-    <div class="grid-container-outer">
+    <div class="grid-container-outer container mt-md">
         <div id="grid-container">
             <!-- generate boxes with JavaScript -->
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
         </div>
     </div>
 </body>
