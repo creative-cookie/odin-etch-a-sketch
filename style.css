@@ -122,8 +122,6 @@ input[type=text]{
 }
 
 .box{
-    width: calc(100% * (1/4));
-    height: calc(100% * (1/4));
     background-color: hsl(var(--clr-light));
     border: 1px solid gray;
 }
