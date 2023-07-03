@@ -44,11 +44,15 @@ function removeGrid(){
     }
 }
 
+//check for values 1-100
+//disable button and show red border around input when invalid
 function formValidation(e){
     if(isNaN(gridSizeInput.value) || gridSizeInput.value > 100 || gridSizeInput.value < 1){
         gridSizeInput.classList.add("input-error");
+        generateGridBtn.disabled = true;
     } else{
         gridSizeInput.classList.remove("input-error");
+        generateGridBtn.disabled = false;
     }
 }
 
