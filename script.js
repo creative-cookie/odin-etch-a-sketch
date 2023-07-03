@@ -53,7 +53,18 @@ function formValidation(e){
 }
 
 function changeColor(e){
-    e.currentTarget.style.backgroundColor = "#000";
+    e.currentTarget.style.backgroundColor = randomColor();
+}
+
+function randomColor(){
+    let max = 250;
+    let min = 10;
+
+    let r = Math.floor(Math.random() * (max - min) + min);
+    let g = Math.floor(Math.random() * (max - min) + min);
+    let b = Math.floor(Math.random() * (max - min) + min);
+
+    return `rgb(${r},${g},${b})`;
 }
 
 function clearGrid(e){
