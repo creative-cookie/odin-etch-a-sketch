@@ -76,8 +76,6 @@ function randomColor(){
 }
 
 function darkenColor(currentColor, originalColor){
-        console.log(currentColor, originalColor);
-
         //use regex to grab rgb values and decrease by 10% using original color values stored in data-originalColor
         //original color values are being used instead of decreased colors to ensure it takes 10 steps to turn to black
         let r = Number(currentColor.match(/\((\d{1,3})\,/)[1]) - Math.ceil(Number(originalColor.match(/\((\d{1,3})\,/)[1] * 0.1));
