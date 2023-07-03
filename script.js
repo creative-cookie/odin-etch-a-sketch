@@ -53,7 +53,15 @@ function formValidation(e){
 }
 
 function changeColor(e){
-    e.currentTarget.style.backgroundColor = randomColor();
+    if(!e.currentTarget.style.backgroundColor){ 
+        //random color if square hasn't had color added yet
+        
+        e.currentTarget.style.backgroundColor = randomColor();
+        e.currentTarget.dataset.originalColor = e.currentTarget.style.backgroundColor;
+    } else { 
+        //darken current color if color has been added
+        e.currentTarget.style.backgroundColor = darkenColor(e.currentTarget.style.backgroundColor, e.currentTarget.dataset.originalColor);
+    }
 }
 
 function randomColor(){
@@ -67,12 +75,25 @@ function randomColor(){
     return `rgb(${r},${g},${b})`;
 }
 
+function darkenColor(currentColor, originalColor){
+        console.log(currentColor, originalColor);
+
+        //use regex to grab rgb values and decrease by 10% using original color values stored in data-originalColor
+        //original color values are being used instead of decreased colors to ensure it takes 10 steps to turn to black
+        let r = Number(currentColor.match(/\((\d{1,3})\,/)[1]) - Math.ceil(Number(originalColor.match(/\((\d{1,3})\,/)[1] * 0.1));
+        let g = Number(currentColor.match(/\,\s(\d{1,3}),/)[1]) - Math.ceil(Number(originalColor.match(/\,\s(\d{1,3}),/)[1] * 0.1));
+        let b = Number(currentColor.match(/\,\s(\d{1,3})\)/)[1]) - Math.ceil(Number(originalColor.match(/\,\s(\d{1,3})\)/)[1] * 0.1));
+
+        console.log(r,g,b);
+        return `rgb(${r},${g},${b})`;
+}
+
 function clearGrid(e){
     e.currentTarget.blur(); // remove btn focus state after click
 
     const boxes = document.getElementsByClassName("box");
     for(let i = 0; i < boxes.length; i++){
-        boxes[i].style.backgroundColor = "#fff";
+        boxes[i].style.backgroundColor = "";
     }
 }
 
