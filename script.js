@@ -55,7 +55,6 @@ function formValidation(e){
 function changeColor(e){
     if(!e.currentTarget.style.backgroundColor){ 
         //random color if square hasn't had color added yet
-        
         e.currentTarget.style.backgroundColor = randomColor();
         e.currentTarget.dataset.originalColor = e.currentTarget.style.backgroundColor;
     } else { 
@@ -65,6 +64,7 @@ function changeColor(e){
 }
 
 function randomColor(){
+    //setting min and max above 0 and below 255 to avoid completely black/white colors
     let max = 250;
     let min = 10;
 
@@ -83,9 +83,16 @@ function darkenColor(currentColor, originalColor){
         let r = Number(currentColor.match(/\((\d{1,3})\,/)[1]) - Math.ceil(Number(originalColor.match(/\((\d{1,3})\,/)[1] * 0.1));
         let g = Number(currentColor.match(/\,\s(\d{1,3}),/)[1]) - Math.ceil(Number(originalColor.match(/\,\s(\d{1,3}),/)[1] * 0.1));
         let b = Number(currentColor.match(/\,\s(\d{1,3})\)/)[1]) - Math.ceil(Number(originalColor.match(/\,\s(\d{1,3})\)/)[1] * 0.1));
+        let colors = [r, g, b];
 
-        console.log(r,g,b);
-        return `rgb(${r},${g},${b})`;
+        //prevent negative rgb values
+        for(let i = 0; i < colors.length; i++){
+            if(colors[i] < 0){
+                colors[i] = 0;
+            }
+        }
+
+        return `rgb(${colors[0]},${colors[1]},${colors[2]})`;
 }
 
 function clearGrid(e){
