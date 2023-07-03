@@ -91,10 +91,15 @@ h1{
     background-color: hsla(var(--clr-secondary),50%);
 }
 
-.action-btn:active{
+.action-btn:enabled:active{
     transform: scale(0.95);
 }
 
+.action-btn:disabled{
+    background-color: gray;
+    color: hsl(var(--clr-light));
+    opacity: 0.5;
+}
 .action-btn,
 input[type=text]{
     padding: .675em 1.5em;
